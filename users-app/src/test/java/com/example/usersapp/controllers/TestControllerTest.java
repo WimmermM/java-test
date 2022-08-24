@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
 public class TestControllerTest {
 
     private TestController testController;
@@ -19,7 +20,4 @@ public class TestControllerTest {
         Assertions.assertEquals("test endpoint was called", testController.testEndpoint());
     }
 
-    @Test
-    void getAllUsers() {
-    }
 }

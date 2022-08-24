@@ -15,23 +15,24 @@ public class UserService {
     private final UserRepo userRepo;
 
     public List<User> getAllUsers() {
-         return userRepo.findAll();
+        return userRepo.findAll();
     }
 
     public User createUser(User user) {
         return userRepo.save(user);
     }
 
-    public User updateUser(Long id, User newUser) {
-        return userRepo.findById(id)
-                .map(user -> {
-                    user.setUsername(newUser.getUsername());
-                    user.setPhoneNumbers(newUser.getPhoneNumbers());
-                    return userRepo.save(newUser);
-                }).orElseGet(() -> {
-                    newUser.setId(id);
-                    return userRepo.save(newUser);
-                });
+    public User updateUser(User newUser) {
+        var testUserOpt = userRepo.findById(newUser.getId());
+
+        if (testUserOpt.isPresent()) {
+            var testUser = testUserOpt.get();
+            testUser.setUsername(newUser.getUsername());
+            testUser.setPhoneNumbers(newUser.getPhoneNumbers());
+            return userRepo.save(testUser);
+        }
+
+        throw new IllegalArgumentException("No user found");
     }
 
     public void deleteUser(Long id) {

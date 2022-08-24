@@ -1,14 +1,15 @@
 package com.example.usersapp.dto;
 
 import com.example.usersapp.entity.User;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
+@ToString(of = "phoneNumber")
 public class PhoneNumberDto {
 
-    private Long id;
-    private User user;
+    private Long userID;
     private String phoneNumber;
 }

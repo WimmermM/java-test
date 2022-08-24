@@ -1,18 +1,19 @@
 package com.example.usersapp.dto;
 
 import com.example.usersapp.entity.PhoneNumber;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 
-@Getter
-@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
 public class UserDto {
 
     private Long id;
     private String username;
-    private List<PhoneNumber> phoneNumbers;
+    private List<String> phoneNumbers;
 }
 
